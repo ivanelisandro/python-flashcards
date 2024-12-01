@@ -1,0 +1,23 @@
+type: edu
+files:
+  - name: flashcards/flashcards.py
+    visible: true
+    learner_created: false
+  - name: test/__init__.py
+    visible: false
+    learner_created: false
+  - name: test/tests.py
+    visible: false
+    learner_created: false
+  - name: tests.py
+    visible: false
+    learner_created: false
+  - name: flashcards/stage1.md
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/10806#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 01 Dec 2024 22:10:08 UTC"
+record: -1
