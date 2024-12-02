@@ -1,6 +1,12 @@
 from cards import CardFactory
 from knowledge import KnowledgeTest
 
-card = CardFactory.create()
-result = KnowledgeTest.verify(card)
-print(result)
+# stage 2:
+# card = CardFactory.create()
+# result = KnowledgeTest.verify(card)
+
+# stage 3:
+cards = CardFactory.create_collection()
+for card in cards:
+    result = KnowledgeTest.verify_with_answer(card)
+    print(result)

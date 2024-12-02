@@ -18,3 +18,17 @@ class KnowledgeTest:
             return "Your answer is right!"
 
         return "Your answer is wrong..."
+
+    @staticmethod
+    def verify_with_answer(card: Card):
+        """
+        Asks the user the answer for a card.
+        :param card: The card to verify the answer for.
+        :return: A text explaining if the user answer was correct or not.
+        """
+        answer = input(f"Print the definition of \"{card.term}\":\n")
+
+        if card.verify(answer):
+            return "Correct!"
+
+        return f"Wrong. The right answer is \"{card.definition}\"."

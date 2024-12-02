@@ -26,3 +26,18 @@ class CardFactory:
         term = input()
         definition = input()
         return Card(term, definition)
+
+    @staticmethod
+    def create_collection():
+        """
+        Collects user inputs for a collection of flashcards.
+        :return: a collection of Cards from the user inputs.
+        """
+        quantity = int(input("Input the number of cards:\n"))
+        cards = []
+
+        for item_number in range(1, quantity + 1):
+            term = input(f"The term for card #{item_number}:\n")
+            definition = input(f"The definition for card #{item_number}:\n")
+            cards.append(Card(term, definition))
+        return cards
