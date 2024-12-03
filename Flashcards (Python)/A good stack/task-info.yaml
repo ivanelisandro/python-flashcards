@@ -12,6 +12,27 @@ files:
   - name: tests.py
     visible: false
     learner_created: false
+  - name: flashcards/knowledge.py
+    visible: true
+    learner_created: true
+  - name: flashcards/stage2.md
+    visible: true
+    learner_created: true
+  - name: flashcards/cards.py
+    visible: true
+    learner_created: true
+  - name: flashcards/stage3.md
+    visible: true
+    learner_created: true
+  - name: flashcards/stage1.md
+    visible: true
+    learner_created: true
+  - name: flashcards/stage4.md
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10809#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Dec 2024 18:33:17 UTC"
 record: -1
