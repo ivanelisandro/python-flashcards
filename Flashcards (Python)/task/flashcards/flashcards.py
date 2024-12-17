@@ -1,5 +1,4 @@
-from cards import CardCollectionFactory
-from knowledge import KnowledgeTest
+from navigation import DeckManager
 
 # stage 2:
 # card = CardFactory.create()
@@ -12,7 +11,11 @@ from knowledge import KnowledgeTest
 #     print(result)
 
 # stage 4:
-collection = CardCollectionFactory.create_unique()
-for card in collection.cards.values():
-    result = KnowledgeTest.verify_with_collection(card, collection)
-    print(result)
+# collection = CardCollectionFactory.create_unique()
+# for card in collection.cards.values():
+#    result = KnowledgeTest.verify_with_collection(card, collection)
+#    print(result)
+
+# stage 5: navigation with menu
+deck = DeckManager()
+deck.navigate()

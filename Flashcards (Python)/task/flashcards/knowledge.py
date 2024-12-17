@@ -1,6 +1,5 @@
 from cards import Card, CardCollection
 
-
 class KnowledgeTest:
     """
     Provides methods for testing your knowledge with previously defined cards.

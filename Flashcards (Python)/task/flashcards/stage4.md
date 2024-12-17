@@ -1,6 +1,6 @@
-# Stage 3:
+# Stage 4:
 
-For stage 3 the objectives are adding the following functionalities:
+For stage 4 the objectives are adding the following functionalities:
 
 - When the user tries to add a duplicate term, forbid it and output the message The term "term" already exists. Try again: using the term instead of "term". Ask for the term until the user inputs a unique term.
 - When the user tries to add a duplicate definition, forbid it and Output the message The definition "definition" already exists. Try again: with the definition instead of "definition". Ask the player to input the definition until the user inputs a unique one.

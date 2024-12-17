@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/25104/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Tue, 03 Dec 2024 17:28:14 UTC"
+update_date: "Tue, 17 Dec 2024 02:57:09 UTC"
 stages:
   - id: 673
     step: 10806
@@ -19,7 +19,7 @@ stages:
     is_completed: true
   - id: 677
     step: 10810
-    is_completed: false
+    is_completed: true
   - id: 678
     step: 10811
     is_completed: false
@@ -64,8 +64,6 @@ topics:
   2:
     - title: For loop
       theory_id: 6065
-    - title: PyCharm basics
-      theory_id: 6193
     - title: Elif statement
       theory_id: 5926
     - title: While loop
@@ -125,8 +123,6 @@ topics:
       theory_id: 6047
     - title: Errors
       theory_id: 6052
-    - title: Linters and helpers
-      theory_id: 18652
     - title: Exceptions
       theory_id: 6042
     - title: Built-in exceptions
@@ -135,6 +131,8 @@ topics:
       theory_id: 6270
     - title: User-defined exceptions
       theory_id: 10217
+    - title: Linters and helpers
+      theory_id: 18652
     - title: Global vs local. Scopes
       theory_id: 6322
     - title: Identity testing
