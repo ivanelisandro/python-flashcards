@@ -16,6 +16,6 @@ from navigation import DeckManager
 #    result = KnowledgeTest.verify_with_collection(card, collection)
 #    print(result)
 
-# stage 5: navigation with menu
+# stage 5 and 6: navigation with menu
 deck = DeckManager()
 deck.navigate()

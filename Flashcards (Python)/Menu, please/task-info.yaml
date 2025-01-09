@@ -37,12 +37,9 @@ files:
   - name: flashcards/navigation.py
     visible: true
     learner_created: true
-  - name: animal_sounds.txt
-    visible: true
-    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10810#comment
 status: Solved
 feedback:
   message: Congratulations!
   time: "Tue, 17 Dec 2024 05:10:11 UTC"
-record: -1
+record: 5

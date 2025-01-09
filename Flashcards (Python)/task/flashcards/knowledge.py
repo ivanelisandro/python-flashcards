@@ -40,7 +40,7 @@ class KnowledgeTest:
         :param card_collection: The collection of cards to take other existent definitions into account.
         :return: A text explaining if the user answer was correct or not.
         """
-        answer = input(f"Print the definition of \"{card.term}\":\n")
+        answer = input()
 
         if card.verify(answer):
             return "Correct!"

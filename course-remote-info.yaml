@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/25104/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Tue, 17 Dec 2024 02:57:09 UTC"
+update_date: "Wed, 08 Jan 2025 22:05:05 UTC"
 stages:
   - id: 673
     step: 10806
@@ -22,7 +22,7 @@ stages:
     is_completed: true
   - id: 678
     step: 10811
-    is_completed: false
+    is_completed: true
   - id: 679
     step: 10812
     is_completed: false
@@ -32,10 +32,10 @@ topics:
       theory_id: 47352
     - title: Multi-line programs
       theory_id: 47555
-    - title: "PEP 8: Coding style guide"
-      theory_id: 47499
     - title: Taking user's input
       theory_id: 47680
+    - title: "PEP 8: Coding style guide"
+      theory_id: 47499
     - title: Comments
       theory_id: 6081
     - title: Basic data types
@@ -64,6 +64,8 @@ topics:
   2:
     - title: For loop
       theory_id: 6065
+    - title: PyCharm basics
+      theory_id: 6193
     - title: Elif statement
       theory_id: 5926
     - title: While loop
@@ -86,12 +88,12 @@ topics:
       theory_id: 6037
     - title: List comprehension
       theory_id: 6315
-    - title: Nested lists
-      theory_id: 6938
     - title: Dictionary
       theory_id: 6481
     - title: Dictionary methods
       theory_id: 9008
+    - title: Nested lists
+      theory_id: 6938
   3:
     - title: Immutability
       theory_id: 7929
@@ -99,8 +101,6 @@ topics:
       theory_id: 6019
     - title: What is object-oriented programming
       theory_id: 3614
-    - title: "Loop control: break, continue, pass"
-      theory_id: 6302
     - title: Class
       theory_id: 6661
     - title: Class instances
@@ -111,6 +111,8 @@ topics:
       theory_id: 6981
     - title: Magic methods
       theory_id: 7139
+    - title: "Loop control: break, continue, pass"
+      theory_id: 6302
     - title: Inheritance
       theory_id: 9844
     - title: Inheritance in Python
@@ -123,6 +125,8 @@ topics:
       theory_id: 6047
     - title: Errors
       theory_id: 6052
+    - title: Linters and helpers
+      theory_id: 18652
     - title: Exceptions
       theory_id: 6042
     - title: Built-in exceptions
@@ -131,8 +135,6 @@ topics:
       theory_id: 6270
     - title: User-defined exceptions
       theory_id: 10217
-    - title: Linters and helpers
-      theory_id: 18652
     - title: Global vs local. Scopes
       theory_id: 6322
     - title: Identity testing
@@ -173,10 +175,10 @@ topics:
       theory_id: 40371
     - title: Abstract and concrete data structures
       theory_id: 16927
-    - title: Iterators
-      theory_id: 8479
     - title: Introduction to logging
       theory_id: 5538
+    - title: Iterators
+      theory_id: 8479
     - title: Math functions
       theory_id: 6256
     - title: Logging

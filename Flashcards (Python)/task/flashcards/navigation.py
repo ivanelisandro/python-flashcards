@@ -1,5 +1,6 @@
 from cards import CardCollection
 from knowledge import KnowledgeTest
+from logging import Logger
 import os.path
 import random
 
@@ -16,12 +17,17 @@ class DeckManager:
     - exit the application;
     """
     def __init__(self):
-        self.collection = CardCollection()
+        self.log = Logger()
+        self.collection = CardCollection(self.log)
         self.actions = { "add": self.add_card,
                          "remove": self.remove_card,
                          "import": self.import_file,
                          "export": self.export_file,
-                         "ask": self.test_random_cards}
+                         "ask": self.test_random_cards,
+                         "exit": self.finish,
+                         "log": self.save_log,
+                         "hardest card": self.print_hardest_card,
+                         "reset stats": self.reset_statistics }
 
     def navigate(self):
         """
@@ -29,15 +35,22 @@ class DeckManager:
         Ends the application loop if you type "exit".
         Ignores typed actions if they do not exist.
         """
-        actions_list = ', '.join((*self.actions.keys(), "exit"))
+        actions_list = ', '.join(self.actions.keys())
         while True:
-            action = input(f"Input the action ({actions_list}):\n")
-            if action == "exit":
-                print("Bye bye!")
-                return
+            self.log.write(f"Input the action ({actions_list}):")
+            action = input()
 
             if action in self.actions:
                 self.actions[action]()
+
+            if action == "exit":
+                return
+
+    def finish(self):
+        """
+        Prints a finalization message.
+        """
+        self.log.write("Bye bye!")
 
     def add_card(self):
         """
@@ -49,7 +62,8 @@ class DeckManager:
         """
         Removes a card by a specified "term".
         """
-        term = input("Which card?\n")
+        self.log.write("Which card?")
+        term = input()
         self.collection.remove(term)
 
     def import_file(self):
@@ -57,32 +71,59 @@ class DeckManager:
         Imports a card collection from a file, keeping the existent ones.
         Definitions for existent cards are updated.
         """
-        file_name = input("File name:\n")
+        self.log.write("File name:")
+        file_name = input()
         if not os.path.isfile(file_name):
-            print("File not found.")
+            self.log.write("File not found.")
             return
 
         with open(file_name, "r", encoding='utf8') as file:
             json_data = file.read()
             cards_count = self.collection.set_json(json_data)
-            print(f"{cards_count} cards have been loaded.")
+            self.log.write(f"{cards_count} cards have been loaded.")
 
     def export_file(self):
         """
         Exports the current card collection to a file.
         """
-        file_name = input("File name:\n")
+        self.log.write("File name:")
+        file_name = input()
         with open(file_name, "w", encoding='utf8') as file:
             file.write(self.collection.get_json())
-            print(f"{len(self.collection.cards)} cards have been saved.")
+            self.log.write(f"{len(self.collection.cards)} cards have been saved.")
 
     def test_random_cards(self):
         """
         Tests a random selection of cards with the number of repetitions selected by the user.
         """
-        repetitions = int(input(f"How many times to ask?\n"))
+        self.log.write(f"How many times to ask?")
+        repetitions = int(input())
         while repetitions > 0:
             random_card = random.choice(list(self.collection.cards.values()))
+            self.log.write(f"Print the definition of \"{random_card.term}\":")
             result = KnowledgeTest.verify_with_collection(random_card, self.collection)
-            print(result)
+            self.log.write(result)
             repetitions -= 1
+
+    def save_log(self):
+        """
+        Exports the current console output to a file.
+        """
+        self.log.write("File name:")
+        file_name = input()
+        with open(file_name, "w", encoding='utf8') as file:
+            file.write(self.log.get_content())
+            self.log.write("The log has been saved.")
+
+    def print_hardest_card(self):
+        """
+        Prints information about the hardest card.
+        """
+        self.log.write(self.collection.get_hardest())
+
+    def reset_statistics(self):
+        """
+        Resets all statistics for the collection.
+        """
+        self.collection.reset_all_errors()
+        self.log.write("Card statistics have been reset.")

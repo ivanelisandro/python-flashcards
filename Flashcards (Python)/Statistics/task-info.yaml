@@ -12,6 +12,39 @@ files:
   - name: tests.py
     visible: false
     learner_created: false
+  - name: flashcards/stage4.md
+    visible: true
+    learner_created: true
+  - name: flashcards/stage5.md
+    visible: true
+    learner_created: true
+  - name: flashcards/navigation.py
+    visible: true
+    learner_created: true
+  - name: flashcards/knowledge.py
+    visible: true
+    learner_created: true
+  - name: flashcards/stage2.md
+    visible: true
+    learner_created: true
+  - name: flashcards/cards.py
+    visible: true
+    learner_created: true
+  - name: flashcards/stage3.md
+    visible: true
+    learner_created: true
+  - name: flashcards/stage1.md
+    visible: true
+    learner_created: true
+  - name: flashcards/stage6.md
+    visible: true
+    learner_created: true
+  - name: flashcards/logging.py
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10811#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Thu, 09 Jan 2025 01:59:23 UTC"
 record: -1
