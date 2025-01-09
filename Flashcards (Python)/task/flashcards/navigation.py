@@ -3,6 +3,29 @@ from knowledge import KnowledgeTest
 from logging import Logger
 import os.path
 import random
+import re
+import sys
+
+
+class ArgumentParser:
+    import_pattern = r"--import_from=(.+)"
+    export_pattern = r"--export_to=(.+)"
+
+    def __init__(self):
+        self.import_from = None
+        self.export_to = None
+        self.arguments = sys.argv[1:]
+
+    @staticmethod
+    def exists(pattern, argument):
+        return re.search(pattern, argument, re.IGNORECASE)
+
+    def process(self):
+        for argument in self.arguments:
+            if import_argument := self.exists(self.import_pattern, argument):
+                self.import_from = import_argument.group(1)
+            if export_argument := self.exists(self.export_pattern, argument):
+                self.export_to = export_argument.group(1)
 
 
 class DeckManager:
@@ -17,17 +40,23 @@ class DeckManager:
     - exit the application;
     """
     def __init__(self):
+        self.parser = ArgumentParser()
         self.log = Logger()
         self.collection = CardCollection(self.log)
         self.actions = { "add": self.add_card,
                          "remove": self.remove_card,
-                         "import": self.import_file,
-                         "export": self.export_file,
+                         "import": self.import_cards,
+                         "export": self.export_cards,
                          "ask": self.test_random_cards,
                          "exit": self.finish,
                          "log": self.save_log,
                          "hardest card": self.print_hardest_card,
                          "reset stats": self.reset_statistics }
+
+    def initialize(self):
+        self.parser.process()
+        if self.parser.import_from:
+            self.import_file(self.parser.import_from)
 
     def navigate(self):
         """
@@ -50,6 +79,8 @@ class DeckManager:
         """
         Prints a finalization message.
         """
+        if self.parser.export_to:
+            self.export_file(self.parser.export_to)
         self.log.write("Bye bye!")
 
     def add_card(self):
@@ -66,31 +97,23 @@ class DeckManager:
         term = input()
         self.collection.remove(term)
 
-    def import_file(self):
+    def import_cards(self):
         """
-        Imports a card collection from a file, keeping the existent ones.
+        Prompts the user for a file name to try importing the cards.
+        Keeps the existent ones.
         Definitions for existent cards are updated.
         """
         self.log.write("File name:")
         file_name = input()
-        if not os.path.isfile(file_name):
-            self.log.write("File not found.")
-            return
+        self.import_file(file_name)
 
-        with open(file_name, "r", encoding='utf8') as file:
-            json_data = file.read()
-            cards_count = self.collection.set_json(json_data)
-            self.log.write(f"{cards_count} cards have been loaded.")
-
-    def export_file(self):
+    def export_cards(self):
         """
-        Exports the current card collection to a file.
+        Prompts the user for a file name to try exporting the cards.
         """
         self.log.write("File name:")
         file_name = input()
-        with open(file_name, "w", encoding='utf8') as file:
-            file.write(self.collection.get_json())
-            self.log.write(f"{len(self.collection.cards)} cards have been saved.")
+        self.export_file(file_name)
 
     def test_random_cards(self):
         """
@@ -127,3 +150,25 @@ class DeckManager:
         """
         self.collection.reset_all_errors()
         self.log.write("Card statistics have been reset.")
+
+    def import_file(self, file_name):
+        """
+        Imports a card collection from a file, keeping the existent ones.
+        Definitions for existent cards are updated.
+        """
+        if not os.path.isfile(file_name):
+            self.log.write("File not found.")
+            return
+
+        with open(file_name, "r", encoding='utf8') as file:
+            json_data = file.read()
+            cards_count = self.collection.set_json(json_data)
+            self.log.write(f"{cards_count} cards have been loaded.")
+
+    def export_file(self, file_name):
+        """
+        Exports the current card collection to a file.
+        """
+        with open(file_name, "w", encoding='utf8') as file:
+            file.write(self.collection.get_json())
+            self.log.write(f"{len(self.collection.cards)} cards have been saved.")

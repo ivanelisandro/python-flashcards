@@ -17,5 +17,10 @@ from navigation import DeckManager
 #    print(result)
 
 # stage 5 and 6: navigation with menu
+# deck = DeckManager()
+# deck.navigate()
+
+# stage 7: process import and export from command line
 deck = DeckManager()
+deck.initialize()
 deck.navigate()

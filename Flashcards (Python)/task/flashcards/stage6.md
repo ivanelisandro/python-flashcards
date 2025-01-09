@@ -1,8 +1,8 @@
 # Stage 6:
 
-For stage 6 we should add a menu.
+For stage 6 we should update the menu.
 
-The program should add support the following actions:
+The program should add support to the following actions:
 
 - save the application log to the given file: log
 - print the term or terms that the user makes most mistakes with: hardest card
